@@ -2,6 +2,10 @@ function addVoteToCard(t) {
   const context = t.getContext();
   console.log('context.card', context.card);
   console.log('context.member', context.member);
+  t.get(context.card, 'shared', 'votes', 0)
+  .then(function(votes) {
+    return t.set(context.card, 'shared', 'votes', votes++);
+  })
 }
 
 TrelloPowerUp.initialize({
@@ -14,31 +18,27 @@ TrelloPowerUp.initialize({
   },
   'card-badges': function (t, opts) {
     return t.card('name')
-    .get('name')
-    .then(function(cardName){
-      console.log('We just loaded the card name for fun: ' + cardName);
-      return [{
-        // dynamic badges can have their function rerun
-        // after a set number of seconds defined by refresh.
-        // Minimum of 10 seconds.
-        dynamic: function(){
-          // we could also return a Promise that resolves to
-          // this as well if we needed to do something async first
-          return {
-            text: 'Dynamic ' + (Math.random() * 100).toFixed(0).toString(),
-            icon: './images/icon.svg',
-            color: 'green',
-            refresh: 10 // in seconds
-          };
-        }
-      }, {
-        // its best to use static badges unless you need your
-        // badges to refresh you can mix and match between
-        // static and dynamic
-        text: 'Static',
-        icon: 'https://cdn.glitch.com/1b42d7fe-bda8-4af8-a6c8-eff0cea9e08a%2Frocket-ship.png?1494946700421',
-        color: null
-      }];
+    .get('id')
+    .then(function(cardId){
+      console.log('We just loaded the card name for fun: ' + cardId);
+      return t.get(cardId, 'shared', 'votes', 0)
+      .then(function(votes) {
+        return [{
+          // dynamic badges can have their function rerun
+          // after a set number of seconds defined by refresh.
+          // Minimum of 10 seconds.
+          dynamic: function(){
+            // we could also return a Promise that resolves to
+            // this as well if we needed to do something async first
+            return {
+              text: 'Votes ' + votes,
+              icon: 'https://cdn.glitch.com/1b42d7fe-bda8-4af8-a6c8-eff0cea9e08a%2Frocket-ship.png?1494946700421',
+              color: 'green',
+              refresh: 10 // in seconds
+            };
+          }
+        }];
+      });
     });
   }
 });

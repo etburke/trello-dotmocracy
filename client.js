@@ -34,7 +34,7 @@ TrelloPowerUp.initialize({
         // badges to refresh you can mix and match between
         // static and dynamic
         text: 'Static',
-        icon: HYPERDEV_ICON, // for card front badges only
+        icon: 'https://cdn.glitch.com/1b42d7fe-bda8-4af8-a6c8-eff0cea9e08a%2Frocket-ship.png?1494946700421',
         color: null
       }];
     });

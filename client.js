@@ -1,5 +1,7 @@
-function addVoteToCard() {
-  console.log('addVoteToCard', arguments);
+function addVoteToCard(t) {
+  const context = t.getContext();
+  console.log('context.card', context.card);
+  console.log('context.member', context.member);
 }
 
 TrelloPowerUp.initialize({

@@ -4,7 +4,7 @@ function addVoteToCard(t) {
   console.log('context.member', context.member);
   t.get(context.card, 'shared', 'votes', 0)
   .then(function(votes) {
-    return t.set(context.card, 'shared', 'votes', votes++);
+    return t.set(context.card, 'shared', 'votes', (votes + 1));
   })
 }
 

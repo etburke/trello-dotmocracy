@@ -1,4 +1,5 @@
 var t = TrelloPowerUp.iframe();
+var context = t.getContext();
 
 window.add.addEventListener('click', function(event) {
   event.preventDefault();

@@ -1,19 +1,14 @@
-function addVoteToCard(t) {
-  const context = t.getContext();
-  console.log('context.card', context.card);
-  console.log('context.member', context.member);
-  t.get(context.card, 'shared', 'votes', 0)
-  .then(function(votes) {
-    return t.set(context.card, 'shared', 'votes', (votes + 1));
-  })
-}
-
 TrelloPowerUp.initialize({
   'card-buttons': function(t, options){
     return [{
       icon: 'https://cdn.glitch.com/1b42d7fe-bda8-4af8-a6c8-eff0cea9e08a%2Frocket-ship.png?1494946700421',
-      text: 'Add Dot Vote',
-      callback: addVoteToCard,
+      text: 'Dotmocratize',
+      callback: function(t){
+        return t.popup({
+          title: "Vote",
+          url: 'vote.html'
+        });
+      }
     }];
   },
   'card-badges': function (t, opts) {

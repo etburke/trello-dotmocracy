@@ -17,7 +17,7 @@ TrelloPowerUp.initialize({
     }];
   },
   'card-badges': function (t, opts) {
-    return t.card('name')
+    return t.card('id')
     .get('id')
     .then(function(cardId) {
       console.log('We just loaded the card name for fun: ' + cardId);

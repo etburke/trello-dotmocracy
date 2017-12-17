@@ -34,12 +34,10 @@ TrelloPowerUp.initialize({
     return t.card('id')
     .get('id')
     .then(function(cardId) {
-      console.log('cardId', cardId);
       return [{
         dynamic: function() {
           return t.get(cardId, 'shared', 'votes', 0)
           .then(function(votes) {
-            console.log('votes', votes);
             return {
               title: 'Votes',
               text: votes,

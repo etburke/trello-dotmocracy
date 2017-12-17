@@ -5,7 +5,7 @@ TrelloPowerUp.initialize({
       text: 'Dotmocratize',
       callback: function(t){
         return t.popup({
-          title: "Vote",
+          title: 'Vote',
           url: 'vote.html'
         });
       }
@@ -39,7 +39,6 @@ TrelloPowerUp.initialize({
           return t.get(cardId, 'shared', 'votes', 0)
           .then(function(votes) {
             return {
-              title: 'Votes',
               text: 'Votes: ' + votes,
               color: 'green',
               refresh: 10 // in seconds

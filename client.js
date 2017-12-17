@@ -40,7 +40,7 @@ TrelloPowerUp.initialize({
           .then(function(votes) {
             return {
               title: 'Votes',
-              text: votes,
+              text: 'Votes: ' + votes,
               color: 'green',
               refresh: 10 // in seconds
             };

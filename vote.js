@@ -33,7 +33,7 @@ window.remove.addEventListener('click', function(event) {
     return t.get('board', 'shared', context.member + 'votes', 0)
     .then(function (votesCast) {
       console.log('votesCast', votesCast);
-      if (votesCast >= 3) {
+      if (votesCast <= 3 && votesCast > 0) {
         return votes;
       }
     });

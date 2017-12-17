@@ -16,7 +16,7 @@ window.add.addEventListener('click', function(event) {
   })
   .then(function(votes) {
     console.log('votes', votes);
-    if (votes) {
+    if (votes != null) {
       return t.set(context.card, 'shared', 'votes', (votes + 1))
       .then(function() {
         return t.set('board', 'shared', context.member + 'votes', (votes + 1));
@@ -39,7 +39,7 @@ window.remove.addEventListener('click', function(event) {
     });
   })
   .then(function(votes) {
-    if (votes) {
+    if (votes != null) {
       return t.set(context.card, 'shared', 'votes', (votes ? votes - 1 : votes))
       .then(function() {
         return t.set('board', 'shared', context.member + 'votes', (votes ? votes - 1 : votes));

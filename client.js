@@ -39,8 +39,8 @@ TrelloPowerUp.initialize({
           return t.get(cardId, 'shared', 'votes', 0)
           .then(function(votes) {
             return {
-              text: 'Votes ' + votes,
-              icon: 'https://cdn.glitch.com/1b42d7fe-bda8-4af8-a6c8-eff0cea9e08a%2Frocket-ship.png?1494946700421',
+              title: 'Votes',
+              text: votes,
               color: 'green',
               refresh: 10 // in seconds
             };

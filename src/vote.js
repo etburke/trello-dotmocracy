@@ -25,8 +25,8 @@ window.remove.addEventListener('click', async (event) => {
   event.preventDefault();
   console.log('remove');
   try {
-    const votes = t.get(context.card, 'shared', 'votes', 0);
-    const votesCast = t.get('board', 'shared', `${context.member}votes`, 0);
+    const votes = await t.get(context.card, 'shared', 'votes', 0);
+    const votesCast = await t.get('board', 'shared', `${context.member}votes`, 0);
     console.log('votes', votes);
     console.log('votesCast', votesCast);
     if (votes && votesCast <= 3 && votesCast > 0) {

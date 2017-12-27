@@ -1,3 +1,6 @@
+import 'babel-core/register';
+import 'babel-polyfill';
+
 const t = TrelloPowerUp.iframe();
 const context = t.getContext();
 

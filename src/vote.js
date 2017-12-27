@@ -12,7 +12,7 @@ window.add.addEventListener('click', async (event) => {
     const votesCast = await t.get('board', 'shared', `${context.member}votes`, 0);
     console.log('votes', votes);
     console.log('votesCast', votesCast);
-    if (votes && votesCast < 3) {
+    if (votes != null && votesCast < 3) {
       await t.set(context.card, 'shared', 'votes', (votes + 1));
       await t.set('board', 'shared', `${context.member}votes`, (votes + 1));
     }
@@ -29,7 +29,7 @@ window.remove.addEventListener('click', async (event) => {
     const votesCast = await t.get('board', 'shared', `${context.member}votes`, 0);
     console.log('votes', votes);
     console.log('votesCast', votesCast);
-    if (votes && votesCast <= 3 && votesCast > 0) {
+    if (votes != null && votesCast <= 3 && votesCast > 0) {
       await t.set(context.card, 'shared', 'votes', (votes ? votes - 1 : votes));
       await t.set('board', 'shared', `${context.member}votes`, (votes ? votes - 1 : votes));
     }

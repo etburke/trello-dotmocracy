@@ -6,7 +6,7 @@ const context = t.getContext();
 
 window.add.addEventListener('click', async (event) => {
   event.preventDefault();
-
+  console.log('add');
   try {
     const votes = await t.get(context.card, 'shared', 'votes', 0);
     const votesCast = await t.get('board', 'shared', `${context.member}votes`, 0);
@@ -22,7 +22,7 @@ window.add.addEventListener('click', async (event) => {
 
 window.remove.addEventListener('click', async (event) => {
   event.preventDefault();
-
+  console.log('remove');
   try {
     const votes = t.get(context.card, 'shared', 'votes', 0);
     const votesCast = t.get('board', 'shared', `${context.member}votes`, 0);
@@ -37,7 +37,7 @@ window.remove.addEventListener('click', async (event) => {
 
 window.reset.addEventListener('click', async (event) => {
   event.preventDefault();
-
+  console.log('reset');
   try {
     const allData = await t.getAll();
     console.log('allData', allData);

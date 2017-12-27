@@ -1,0 +1,27 @@
+{
+  "name": "trello-dotmocracy",
+  "version": "1.0.0",
+  "description": "Dotmocracy Power-Up for Trello",
+  "main": "client.js",
+  "eslintConfig": {},
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-env": "^1.6.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/etburke/trello-dotmocracy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/etburke/trello-dotmocracy/issues"
+  },
+  "homepage": "https://github.com/etburke/trello-dotmocracy#readme"
+}

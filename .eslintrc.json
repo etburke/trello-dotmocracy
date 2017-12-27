@@ -1,0 +1,10 @@
+{
+  "extends": "airbnb",
+  "globals": {
+    "TrelloPowerUp": true,
+    "window": true
+  },
+  "rules": {
+    "no-console": "off"
+  }
+}

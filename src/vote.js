@@ -4,7 +4,7 @@ import 'babel-polyfill';
 const t = TrelloPowerUp.iframe();
 const context = t.getContext();
 
-window.add.addEventListener('click', async (event) => {
+window.add.addEventListener('click', async function add(event) {
   event.preventDefault();
   console.log('add');
   try {
@@ -20,7 +20,7 @@ window.add.addEventListener('click', async (event) => {
   }
 });
 
-window.remove.addEventListener('click', async (event) => {
+window.remove.addEventListener('click', async function remove(event) {
   event.preventDefault();
   console.log('remove');
   try {
@@ -35,7 +35,7 @@ window.remove.addEventListener('click', async (event) => {
   }
 });
 
-window.reset.addEventListener('click', async (event) => {
+window.reset.addEventListener('click', async function reset(event) {
   event.preventDefault();
   console.log('reset');
   try {

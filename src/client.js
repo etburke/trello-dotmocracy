@@ -3,7 +3,7 @@ import 'babel-polyfill';
 
 const print = () => console.log('board button click');
 const setTimer = duration => async (t) => {
-  const timeRemaining = await t.get(t.getContext().board, 'shared', 'timeRemaining', 0);
+  const timeRemaining = await t.get('board', 'shared', 'timeRemaining', 0);
   console.log('duration', duration);
   console.log('timeRemaining', timeRemaining);
 };

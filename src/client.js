@@ -1,14 +1,18 @@
 import 'babel-core/register';
 import 'babel-polyfill';
 
+const print = (t, opts) => console.log('board button click');
+
 const boardButtons = () => ([
   {
     icon: 'https://cdn.glitch.com/1b42d7fe-bda8-4af8-a6c8-eff0cea9e08a%2Frocket-ship.png?1494946700421',
     text: 'Reset Votes',
+    callback: print,
   },
   {
     icon: 'https://cdn.glitch.com/1b42d7fe-bda8-4af8-a6c8-eff0cea9e08a%2Frocket-ship.png?1494946700421',
     text: 'Set Timer',
+    callback: print,
   },
 ]);
 
@@ -56,7 +60,7 @@ const cardDetailBadges = async (t) => {
   }];
 };
 
-TrelloPowerUp.initialize({
+window.TrelloPowerUp.initialize({
   'board-buttons': boardButtons,
   'card-buttons': cardButtons,
   'card-badges': cardBadges,

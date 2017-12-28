@@ -1,7 +1,7 @@
 import 'babel-core/register';
 import 'babel-polyfill';
 
-const t = TrelloPowerUp.iframe();
+const t = window.TrelloPowerUp.iframe();
 const context = t.getContext();
 
 window.add.addEventListener('click', async (event) => {

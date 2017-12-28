@@ -6,11 +6,9 @@ const print = () => console.log('board button click');
 
 const setTimer = duration => async (t) => {
   const timerExpiration = await t.get('board', 'shared', 'timerExpiration', '');
-  const now = DateTime.utc();
-  await t.set('board', 'shared', 'timerExpiration', now.plus({
-    minutes: duration,
-  }).toString());
-
+  const newExpiration = DateTime.utc().plus({ minutes: duration }).toString();
+  await t.set('board', 'shared', 'timerExpiration', newExpiration);
+  console.log('newExpiration', newExpiration);
   console.log('duration', duration);
   console.log('timerExpiration', timerExpiration);
 };

@@ -1,11 +1,18 @@
 import 'babel-core/register';
 import 'babel-polyfill';
+import { DateTime } from 'luxon';
 
 const print = () => console.log('board button click');
+
 const setTimer = duration => async (t) => {
-  const timeRemaining = await t.get('board', 'shared', 'timeRemaining', 0);
+  const timerExpiration = await t.get('board', 'shared', 'timerExpiration', '');
+  const now = DateTime.utc();
+  await t.set('board', 'shared', 'timerExpiration', now.plus({
+    minutes: duration,
+  }).toString());
+
   console.log('duration', duration);
-  console.log('timeRemaining', timeRemaining);
+  console.log('timerExpiration', timerExpiration);
 };
 
 const durations = [1, 2, 5, 10, 30, 60];

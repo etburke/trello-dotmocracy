@@ -10,7 +10,7 @@ const checkTimer = async (t) => {
   console.log('diff', diff);
 };
 const setTimer = duration => async (t) => {
-  await checkTimer();
+  await checkTimer(t);
   const newExpiration = DateTime.utc().plus({ minutes: duration }).toString();
   await t.set('board', 'shared', 'timerExpiration', newExpiration);
   console.log('newExpiration', newExpiration);

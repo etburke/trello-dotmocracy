@@ -1,7 +1,14 @@
 import 'babel-core/register';
 import 'babel-polyfill';
 
-const print = (t, opts) => console.log('board button click', opts);
+const print = () => console.log('board button click');
+const setTimer = duration => async (t) => {
+  const timeRemaining = await t.get(t.getContext().board, 'shared', 'timeRemaining', 0);
+  console.log('duration', duration);
+  console.log('timeRemaining', timeRemaining);
+};
+
+const durations = [1, 2, 5, 10, 30, 60];
 
 const boardButtons = () => ([
   {
@@ -14,15 +21,10 @@ const boardButtons = () => ([
     text: 'Set Timer',
     callback: t => t.popup({
       title: 'Set Timer',
-      items: [{
-        text: 'In 1 hour',
-        duration: 60,
-        callback: print,
-      }, {
-        text: 'In 2 hours',
-        duration: 120,
-        callback: print,
-      }],
+      items: durations.map(duration => ({
+        text: `${duration} minutes`,
+        callback: setTimer(duration),
+      })),
     }),
   },
 ]);

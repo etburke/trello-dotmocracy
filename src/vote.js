@@ -38,15 +38,4 @@ window.remove.addEventListener('click', async (event) => {
   }
 });
 
-window.reset.addEventListener('click', async (event) => {
-  event.preventDefault();
-  console.log('reset');
-  try {
-    const allData = await t.getAll();
-    console.log('allData', allData);
-  } catch (e) {
-    console.log('reset exception', e);
-  }
-});
-
 t.render(() => t.sizeTo('#vote').done());

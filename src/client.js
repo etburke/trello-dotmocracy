@@ -12,7 +12,10 @@ const boardButtons = () => ([
   {
     icon: 'https://cdn.glitch.com/1b42d7fe-bda8-4af8-a6c8-eff0cea9e08a%2Frocket-ship.png?1494946700421',
     text: 'Set Timer',
-    callback: print,
+    callback: t => t.popup({
+      title: 'Set Timer',
+      url: 'html/set-timer.html',
+    }),
   },
 ]);
 
@@ -21,7 +24,7 @@ const cardButtons = () => ([{
   text: 'Dotmocratize',
   callback: t => t.popup({
     title: 'Vote',
-    url: 'vote.html',
+    url: 'html/vote.html',
   }),
 }]);
 

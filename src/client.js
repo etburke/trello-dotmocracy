@@ -1,7 +1,7 @@
 import 'babel-core/register';
 import 'babel-polyfill';
 
-const print = (t, opts) => console.log('board button click');
+const print = (t, opts) => console.log('board button click', opts);
 
 const boardButtons = () => ([
   {
@@ -14,7 +14,15 @@ const boardButtons = () => ([
     text: 'Set Timer',
     callback: t => t.popup({
       title: 'Set Timer',
-      url: 'html/set-timer.html',
+      items: [{
+        text: 'In 1 hour',
+        duration: 60,
+        callback: print,
+      }, {
+        text: 'In 2 hours',
+        duration: 120,
+        callback: print,
+      }],
     }),
   },
 ]);

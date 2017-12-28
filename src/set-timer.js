@@ -1,8 +1,8 @@
-import 'babel-core/register';
-import 'babel-polyfill';
-
-const t = window.TrelloPowerUp.iframe();
-const context = t.getContext();
+// import 'babel-core/register';
+// import 'babel-polyfill';
+//
+// const t = window.TrelloPowerUp.iframe();
+// const context = t.getContext();
 
 // window.reset.addEventListener('click', async (event) => {
 //   event.preventDefault();
@@ -15,4 +15,4 @@ const context = t.getContext();
 //   }
 // });
 
-t.render(() => t.sizeTo('#set-timer').done());
+// t.render(() => t.sizeTo('#set-timer').done());

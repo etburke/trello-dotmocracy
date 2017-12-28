@@ -3,14 +3,18 @@ import 'babel-polyfill';
 import { DateTime } from 'luxon';
 
 const print = () => console.log('board button click');
-
-const setTimer = duration => async (t) => {
+const checkTimer = async (t) => {
   const timerExpiration = await t.get('board', 'shared', 'timerExpiration', '');
+  const now = DateTime.utc();
+  const diff = DateTime.fromISO(timerExpiration).diff(now, 'seconds');
+  console.log('diff', diff);
+};
+const setTimer = duration => async (t) => {
+  await checkTimer();
   const newExpiration = DateTime.utc().plus({ minutes: duration }).toString();
   await t.set('board', 'shared', 'timerExpiration', newExpiration);
   console.log('newExpiration', newExpiration);
   console.log('duration', duration);
-  console.log('timerExpiration', timerExpiration);
 };
 
 const durations = [1, 2, 5, 10, 30, 60];

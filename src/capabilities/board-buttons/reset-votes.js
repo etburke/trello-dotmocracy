@@ -10,7 +10,7 @@ const resetVotes = {
     console.log('board', board);
     const promises = Object.keys(board.shared)
       .filter(i => i.includes('votes'))
-      .map(i => reset(t)(i));
+      .map(i => reset(i));
     console.log('promises', promises);
     await Promise.all(promises);
   },

@@ -3,10 +3,9 @@ const resetVotes = {
   text: 'Reset Votes',
   callback: t => t.getAll()
     .then(({ board }) => {
-      const promises = Object.keys(board.shared)
-        .filter(i => i.includes('votes'))
-        .map(i => t.remove('board', 'shared', i));
-      return Promise.all(promises);
+      const items = Object.keys(board.shared)
+        .filter(i => i.includes('votes'));
+      return t.remove('board', 'shared', items);
     })
     .then(res => console.log('res', res)),
 };

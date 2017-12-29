@@ -5,7 +5,7 @@ const resetVotes = {
     const reset = async (item) => {
       console.log('resetting item', item);
       try {
-        await t.set('board', 'shared', item, 0);
+        await t.remove('board', 'shared', item);
       } catch (ex) {
         console.log('ex', ex);
       }

@@ -3,7 +3,7 @@ const resetVotes = {
   text: 'Reset Votes',
   callback: async (t) => {
     const reset = item => t.set('board', 'shared', item, 0)
-      .then(() => console.log(`finished ${item}`));
+      .then(res => console.log(`finished ${item}`, res));
     try {
       const { board } = await t.getAll();
       console.log('board', board);

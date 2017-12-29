@@ -1,4 +1,5 @@
-const add = async (t, context) => {
+const add = async (t) => {
+  const context = t.getContext();
   try {
     const votes = await t.get('board', 'shared', `${context.card}:votes`, 0);
     const totalVotesCast = await t.get('board', 'shared', `${context.member}:votes`, 0);
@@ -22,7 +23,7 @@ const votesRemaining = async (t) => {
     icon: 'https://cdn.glitch.com/1b42d7fe-bda8-4af8-a6c8-eff0cea9e08a%2Frocket-ship.png?1494946700421',
     color: 'yellow',
     refresh: 10, // in seconds
-    callback: async () => add(t, context),
+    callback: add,
   });
 
   return {

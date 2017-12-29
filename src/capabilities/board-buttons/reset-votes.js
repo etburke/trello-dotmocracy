@@ -6,7 +6,7 @@ const resetVotes = {
   callback: async (t) => {
     const { board } = await t.getAll();
     console.log('board', board);
-    const promises = Object.keys(board)
+    const promises = Object.keys(board.shared)
       .filter(i => i.includes('votes'))
       .map(i => reset(t)(i));
     console.log('promises', promises);

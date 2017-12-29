@@ -5,10 +5,11 @@ const resetVotes = {
   text: 'Reset Votes',
   callback: async (t) => {
     const { board } = await t.getAll();
+    console.log('board', board);
     const promises = Object.keys(board)
       .filter(i => i.includes('votes'))
       .map(i => reset(t)(i));
-
+    console.log('promises', promises);
     await Promise.all(promises);
   },
 };

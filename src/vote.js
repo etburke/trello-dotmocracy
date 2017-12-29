@@ -14,7 +14,7 @@ window.add.addEventListener('click', async (event) => {
     console.log('votesCast', votesCast);
     if (votes != null && votesCast < 3) {
       await t.set('board', 'shared', `${context.card}:votes`, (votes + 1));
-      await t.set('board', 'shared', `${context.member}:votes`, (votes + 1));
+      await t.set('board', 'shared', `${context.member}:votes`, (votesCast + 1));
     }
   } catch (e) {
     console.log('add exception', e);
@@ -31,7 +31,7 @@ window.remove.addEventListener('click', async (event) => {
     console.log('votesCast', votesCast);
     if (votes != null && votesCast <= 3 && votesCast > 0) {
       await t.set('board', 'shared', `${context.card}:votes`, (votes ? votes - 1 : votes));
-      await t.set('board', 'shared', `${context.member}:votes`, (votes ? votes - 1 : votes));
+      await t.set('board', 'shared', `${context.member}:votes`, (votesCast ? votesCast - 1 : votesCast));
     }
   } catch (e) {
     console.log('remove exception', e);

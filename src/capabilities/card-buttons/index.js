@@ -1,7 +1,3 @@
-import vote from './vote';
-
-const cardButtons = () => ([
-  vote,
-]);
-
-export default cardButtons;
+// const cardButtons = () => ([]);
+//
+// export default cardButtons;

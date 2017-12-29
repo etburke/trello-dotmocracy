@@ -14,10 +14,14 @@ const resetVotes = {
       const { board } = await t.getAll();
       console.log('board', board);
       const promises = Object.keys(board.shared)
-        .filter(i => i.includes('votes'))
-        .map(i => reset(i));
+        .filter(i => i.includes('votes'));
+        // .map(i => reset(i));
       console.log('promises', promises);
-      await Promise.all(promises);
+      await reset(promises[0]);
+      await reset(promises[1]);
+      await reset(promises[2]);
+      await reset(promises[3]);
+      // await Promise.all(promises);
     } catch (ex) {
       console.log('Promise.all ex', ex);
     }

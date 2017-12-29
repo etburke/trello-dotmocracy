@@ -17,7 +17,7 @@ const resetVotes = {
         .filter(i => i.includes('votes'))
         .map(i => t.set('board', 'shared', i, 0));
         // .map(i => reset(i));
-      // console.log('promises', promises);
+      console.log('promises', promises);
       // await reset(promises[0]);
       // await reset(promises[1]);
       // await reset(promises[2]);

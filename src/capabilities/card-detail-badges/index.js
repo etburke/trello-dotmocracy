@@ -5,9 +5,9 @@ import votesRemaining from './votes-remaining';
 
 const cardDetailBadges = async t => ([
   await votes(t),
-  await votesRemaining(t),
   addVote,
   removeVote,
+  await votesRemaining(t),
 ]);
 
 export default cardDetailBadges;

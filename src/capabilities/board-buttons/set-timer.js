@@ -5,6 +5,7 @@ const checkTimer = async (t) => {
   const now = DateTime.utc();
   const diff = DateTime.fromISO(timerExpiration).diff(now, 'seconds').toObject();
   console.log('diff', diff);
+  await t.set('board', 'shared', 'timeRemaining', diff);
 };
 
 const setNewTimer = duration => async (t) => {

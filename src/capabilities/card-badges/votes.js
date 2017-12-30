@@ -1,8 +1,10 @@
 const votes = async (t) => {
-  const cardId = await t.card('id').get('id');
+  const context = t.getContext();
+  const allVotes = await t.get('board', 'shared', `${context.card}:votes`, 0);
+  const yourVotes = await t.get('board', 'shared', `${context.member}:${context.card}:votes`, 0);
 
   const dynamic = async () => ({
-    text: `Votes ${await t.get('board', 'shared', `${cardId}:votes`, 0)}`,
+    text: `Votes ${allVotes} (${yourVotes})`,
     icon: 'https://cdn.glitch.com/1b42d7fe-bda8-4af8-a6c8-eff0cea9e08a%2Frocket-ship.png?1494946700421',
     color: 'green',
     refresh: 10, // in seconds

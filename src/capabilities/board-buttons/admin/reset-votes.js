@@ -1,7 +1,7 @@
 const resetUserVotes = async (t) => {
   const { board } = await t.getAll();
   const items = Object.keys(board.shared)
-    .filter(i => (i.includes('votes') && i.includes('member')));
+    .filter(i => i.includes(':member:votes'));
   await t.remove('board', 'shared', items);
 };
 

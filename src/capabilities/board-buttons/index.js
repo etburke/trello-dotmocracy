@@ -1,9 +1,7 @@
-import resetVotes from './reset-votes';
-import setTimer from './set-timer';
+import admin from './admin';
 
 const boardButtons = () => ([
-  resetVotes,
-  setTimer,
+  admin,
 ]);
 
 export default boardButtons;

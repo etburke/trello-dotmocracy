@@ -1,7 +1,7 @@
 const votes = async (t) => {
   const context = t.getContext();
-  const allVotes = await t.get('board', 'shared', `${context.card}:votes`, 0);
-  const yourVotes = await t.get('board', 'shared', `${context.member}:${context.card}:votes`, 0);
+  const allVotes = await t.get('board', 'shared', `${context.card}:card:votes`, 0);
+  const yourVotes = await t.get('board', 'shared', `${context.member}:${context.card}:member-card:votes`, 0);
 
   const dynamic = async () => ({
     text: `Votes ${allVotes} (${yourVotes})`,

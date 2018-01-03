@@ -6,14 +6,14 @@ const addVote = {
   callback: async (t) => {
     const context = t.getContext();
     try {
-      const votes = await t.get('board', 'shared', `${context.card}:votes`, 0);
-      const totalVotesCast = await t.get('board', 'shared', `${context.member}:votes`, 0);
-      const votesCastForCard = await t.get('board', 'shared', `${context.member}:${context.card}:votes`, 0);
+      const votes = await t.get('board', 'shared', `${context.card}:card:votes`, 0);
+      const totalVotesCast = await t.get('board', 'shared', `${context.member}:member:votes`, 0);
+      const votesCastForCard = await t.get('board', 'shared', `${context.member}:${context.card}:member-card:votes`, 0);
 
       if (votes != null && totalVotesCast < 3) {
-        await t.set('board', 'shared', `${context.card}:votes`, (votes + 1));
-        await t.set('board', 'shared', `${context.member}:votes`, (totalVotesCast + 1));
-        await t.set('board', 'shared', `${context.member}:${context.card}:votes`, (votesCastForCard + 1));
+        await t.set('board', 'shared', `${context.card}:card:votes`, (votes + 1));
+        await t.set('board', 'shared', `${context.member}:member:votes`, (totalVotesCast + 1));
+        await t.set('board', 'shared', `${context.member}:${context.card}:member-card:votes`, (votesCastForCard + 1));
       }
     } catch (e) {
       console.log('add exception', e);

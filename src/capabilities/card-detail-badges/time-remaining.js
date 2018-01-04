@@ -16,8 +16,8 @@ const formatSeconds = (seconds) => {
   return `About ${moment.duration(seconds, 'seconds').humanize()} remaining`;
 };
 
-const timeRemaining = async (t) => {
-  const dynamic = async () => {
+const timeRemaining = {
+  dynamic: async (t) => {
     const secondsRemaining = await checkTimer(t);
     const text = secondsRemaining ?
       formatSeconds(secondsRemaining) :
@@ -28,11 +28,7 @@ const timeRemaining = async (t) => {
       color: 'yellow',
       refresh: 10, // in seconds
     };
-  };
-
-  return {
-    dynamic,
-  };
+  },
 };
 
 export default timeRemaining;

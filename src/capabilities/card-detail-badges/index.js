@@ -4,12 +4,12 @@ import votes from '../card-badges/votes';
 import votesRemaining from './votes-remaining';
 import timeRemaining from './time-remaining';
 
-const cardDetailBadges = async t => ([
+const cardDetailBadges = () => ([
   votes,
   addVote,
   removeVote,
-  await votesRemaining(t),
-  await timeRemaining(t),
+  votesRemaining,
+  timeRemaining,
 ]);
 
 export default cardDetailBadges;

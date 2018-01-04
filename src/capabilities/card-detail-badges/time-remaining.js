@@ -3,16 +3,24 @@ import moment from 'moment';
 const checkTimer = async (t) => {
   const timerExpiration = await t.get('board', 'shared', 'timerExpiration', '');
   const now = moment.utc();
-  const diff = moment.utc(timerExpiration).diff(now, 'seconds');
-  const { seconds } = diff.toObject();
-  return seconds > 0 ? diff.format() : null;
+  const seconds = moment.utc(timerExpiration).diff(now, 'seconds');
+  return seconds > 0 ? Math.floor(seconds) : null;
+};
+
+const formatSeconds = (seconds) => {
+  if (seconds < 60) {
+    return seconds < 15 ?
+      'a few seconds remaining' :
+      `about ${seconds} remaining`;
+  }
+  return `about ${moment.duration(seconds, 'seconds').humanize()} remaining`;
 };
 
 const timeRemaining = async (t) => {
   const dynamic = async () => {
-    const durationRemaining = await checkTimer(t);
-    const text = durationRemaining ?
-      `${durationRemaining} Remaining` :
+    const secondsRemaining = await checkTimer(t);
+    const text = secondsRemaining ?
+      formatSeconds(secondsRemaining) :
       'Time has elapsed';
     return {
       text,

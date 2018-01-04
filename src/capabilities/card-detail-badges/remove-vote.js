@@ -9,8 +9,9 @@ const removeVote = {
       const votes = await t.get('board', 'shared', `${context.card}:card:votes`, 0);
       const totalVotesCast = await t.get('board', 'shared', `${context.member}:member:votes`, 0);
       const votesCastForCard = await t.get('board', 'shared', `${context.member}:${context.card}:member-card:votes`, 0);
+      const votesPerMember = await t.get('board', 'shared', 'votesPerMember', 3);
 
-      if (votes && totalVotesCast <= 3 && totalVotesCast > 0 && votesCastForCard > 0) {
+      if (votes && totalVotesCast <= votesPerMember && totalVotesCast > 0 && votesCastForCard > 0) {
         await t.set('board', 'shared', `${context.card}:card:votes`, (votes - 1));
         await t.set('board', 'shared', `${context.member}:member:votes`, (totalVotesCast - 1));
         await t.set('board', 'shared', `${context.member}:${context.card}:member-card:votes`, (votesCastForCard - 1));

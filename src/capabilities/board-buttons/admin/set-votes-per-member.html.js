@@ -21,6 +21,12 @@ window['set-votes-per-member'].addEventListener('submit', async (event) => {
   t.closePopup();
 });
 
+const initForm = async () => {
+  const votesPerMember = await t.get('board', 'shared', 'votesPerMember', 3);
+  window['votes-per-member'].value = votesPerMember;
+};
+
 t.render(() => {
   t.sizeTo('#set-votes-per-member').done();
+  initForm();
 });

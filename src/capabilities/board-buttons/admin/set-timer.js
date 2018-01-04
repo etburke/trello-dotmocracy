@@ -3,8 +3,7 @@ import moment from 'moment';
 const checkTimer = async (t) => {
   const timerExpiration = await t.get('board', 'shared', 'timerExpiration', '');
   const now = moment.utc();
-  const diff = moment.fromISO(timerExpiration).diff(now, 'seconds').toObject();
-  console.log('diff', diff);
+  const diff = moment.utc(timerExpiration).diff(now, 'seconds').toObject();
   await t.set('board', 'shared', 'timeRemaining', diff);
 };
 
@@ -12,8 +11,6 @@ const setNewTimer = duration => async (t) => {
   await checkTimer(t);
   const newExpiration = moment.utc().plus({ minutes: duration }).toString();
   await t.set('board', 'shared', 'timerExpiration', newExpiration);
-  console.log('newExpiration', newExpiration);
-  console.log('duration', duration);
 };
 
 const durations = [1, 2, 5, 10, 30, 60];

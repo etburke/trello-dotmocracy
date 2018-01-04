@@ -3,7 +3,7 @@ import moment from 'moment';
 const checkTimer = async (t) => {
   const timerExpiration = await t.get('board', 'shared', 'timerExpiration', '');
   const now = moment.utc();
-  const diff = moment.fromISO(timerExpiration).diff(now, 'seconds');
+  const diff = moment.utc(timerExpiration).diff(now, 'seconds');
   const { seconds } = diff.toObject();
   return seconds > 0 ? diff.format() : null;
 };

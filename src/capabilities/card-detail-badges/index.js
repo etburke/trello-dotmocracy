@@ -5,7 +5,7 @@ import votesRemaining from './votes-remaining';
 import timeRemaining from './time-remaining';
 
 const cardDetailBadges = async t => ([
-  await votes(t),
+  votes,
   addVote,
   removeVote,
   await votesRemaining(t),

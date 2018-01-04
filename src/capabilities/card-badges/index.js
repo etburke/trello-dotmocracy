@@ -1,7 +1,7 @@
 import votes from './votes';
 
-const cardBadges = async t => ([
-  await votes(t),
+const cardBadges = () => ([
+  votes,
 ]);
 
 export default cardBadges;

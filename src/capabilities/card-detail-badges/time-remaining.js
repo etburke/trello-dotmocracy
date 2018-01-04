@@ -1,17 +1,18 @@
-import { DateTime } from 'luxon';
+import moment from 'moment';
 
 const checkTimer = async (t) => {
   const timerExpiration = await t.get('board', 'shared', 'timerExpiration', '');
-  const now = DateTime.utc();
-  const { seconds } = DateTime.fromISO(timerExpiration).diff(now, 'seconds').toObject();
-  return seconds;
+  const now = moment.utc();
+  const diff = moment.fromISO(timerExpiration).diff(now, 'seconds');
+  const { seconds } = diff.toObject();
+  return seconds > 0 ? diff.format() : null;
 };
 
 const timeRemaining = async (t) => {
   const dynamic = async () => {
-    const secondsRemaining = await checkTimer(t);
-    const text = secondsRemaining > 0 ?
-      `${secondsRemaining} Seconds Remaining` :
+    const durationRemaining = await checkTimer(t);
+    const text = durationRemaining ?
+      `${durationRemaining} Remaining` :
       'Time has elapsed';
     return {
       text,

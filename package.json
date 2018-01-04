@@ -6,7 +6,7 @@
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-polyfill": "^6.26.0",
-    "luxon": "^0.2.10"
+    "moment": "^2.20.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

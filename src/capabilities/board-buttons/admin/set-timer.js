@@ -1,16 +1,16 @@
-import { DateTime } from 'luxon';
+import moment from 'moment';
 
 const checkTimer = async (t) => {
   const timerExpiration = await t.get('board', 'shared', 'timerExpiration', '');
-  const now = DateTime.utc();
-  const diff = DateTime.fromISO(timerExpiration).diff(now, 'seconds').toObject();
+  const now = moment.utc();
+  const diff = moment.fromISO(timerExpiration).diff(now, 'seconds').toObject();
   console.log('diff', diff);
   await t.set('board', 'shared', 'timeRemaining', diff);
 };
 
 const setNewTimer = duration => async (t) => {
   await checkTimer(t);
-  const newExpiration = DateTime.utc().plus({ minutes: duration }).toString();
+  const newExpiration = moment.utc().plus({ minutes: duration }).toString();
   await t.set('board', 'shared', 'timerExpiration', newExpiration);
   console.log('newExpiration', newExpiration);
   console.log('duration', duration);

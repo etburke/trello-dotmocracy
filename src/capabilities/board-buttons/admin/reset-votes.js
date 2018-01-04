@@ -3,6 +3,7 @@ const resetUserVotes = async (t) => {
   const items = Object.keys(board.shared)
     .filter(i => i.includes(':member:votes'));
   await t.remove('board', 'shared', items);
+  t.closePopup();
 };
 
 const resetAllVotes = async (t) => {
@@ -10,6 +11,7 @@ const resetAllVotes = async (t) => {
   const items = Object.keys(board.shared)
     .filter(i => i.includes('votes'));
   await t.remove('board', 'shared', items);
+  t.closePopup();
 };
 
 const resetVotes = {

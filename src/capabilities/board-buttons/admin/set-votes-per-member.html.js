@@ -3,21 +3,21 @@ import 'babel-polyfill';
 
 const t = TrelloPowerUp.iframe();
 
-const resetAllVotes = async (votesPerMember) => {
-  const { board } = await t.getAll();
-  await t.set('board', 'shared', 'votesPerMember', votesPerMember);
-  const items = Object.keys(board.shared)
-    .filter(i => i.includes('votes'));
-  await t.remove('board', 'shared', items);
+const resetAllVotes = async (newVotesPerMember) => {
+  const votesPerMember = await t.get('board', 'shared', 'votesPerMember', 3);
+  if (newVotesPerMember !== votesPerMember) {
+    await t.set('board', 'shared', 'votesPerMember', newVotesPerMember);
+    const { board } = await t.getAll();
+    const items = Object.keys(board.shared)
+      .filter(i => i.includes('votes'));
+    await t.remove('board', 'shared', items);
+  }
 };
 
 window['set-votes-per-member'].addEventListener('submit', async (event) => {
   event.preventDefault();
-
   const { value } = window['votes-per-member'];
-
   await resetAllVotes(value);
-
   t.closePopup();
 });
 

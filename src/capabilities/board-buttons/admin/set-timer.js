@@ -1,15 +1,9 @@
 import moment from 'moment';
 
-const checkTimer = async (t) => {
-  const timerExpiration = await t.get('board', 'shared', 'timerExpiration', '');
-  const now = moment.utc();
-  const diff = moment.utc(timerExpiration).diff(now, 'seconds');
-  await t.set('board', 'shared', 'timeRemaining', diff);
-};
-
 const setNewTimer = duration => async (t) => {
   const newExpiration = moment.utc().add(duration, 'minutes').format();
   await t.set('board', 'shared', 'timerExpiration', newExpiration);
+  t.closePopup();
 };
 
 const durations = [1, 2, 5, 10, 30, 60];

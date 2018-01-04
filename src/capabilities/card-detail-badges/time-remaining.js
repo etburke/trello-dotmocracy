@@ -10,10 +10,10 @@ const checkTimer = async (t) => {
 const formatSeconds = (seconds) => {
   if (seconds < 60) {
     return seconds < 15 ?
-      'a few seconds remaining' :
-      `about ${seconds} remaining`;
+      'A few seconds remaining' :
+      `Fewer than ${seconds} seconds remaining`;
   }
-  return `about ${moment.duration(seconds, 'seconds').humanize()} remaining`;
+  return `About ${moment.duration(seconds, 'seconds').humanize()} remaining`;
 };
 
 const timeRemaining = async (t) => {
@@ -21,7 +21,7 @@ const timeRemaining = async (t) => {
     const secondsRemaining = await checkTimer(t);
     const text = secondsRemaining ?
       formatSeconds(secondsRemaining) :
-      'Time has elapsed';
+      'Timer has elapsed';
     return {
       text,
       icon: 'https://cdn.glitch.com/1b42d7fe-bda8-4af8-a6c8-eff0cea9e08a%2Frocket-ship.png?1494946700421',
